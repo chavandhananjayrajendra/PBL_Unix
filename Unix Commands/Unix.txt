@@ -1,0 +1,55 @@
+chava@DhananjayChavan MINGW64 ~
+$ cd downloads
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ grep -c "|Delivered" Parcel.txt
+2
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ grep "^B002|" Booking.txt | awk -F '|' '{print $1 "|" $2 "|" $7}' || echo "Booking details Not Found"
+B002|Jane Smith|Pending
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ awk -F '|' -v start="2024-01-01" -v end="2024-01-12" '$6 >= start && $6 <= end {count[$2]++} END {for (i in count) print i, count[i]}' Booking.txt | sort -k2,2nr
+Emily Brown 1
+Jane Smith 1
+John Doe 1
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ grep "^.*,An" customer.txt
+C002,Annie Brown,456 Oak St,annie@example.com,555-5678
+C003,Andrew Green,789 Pine St,andrew@example.com,555-9101
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ sed -i 's/annie@example.com/newannie@example.com/' customer.txt
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ touch customer.txt
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ awk -F '|' '{print $1 "|" $2 "|" $6}' booking.txt | sort -k1,1nr
+B001|John Doe|2024-01-10
+B002|Jane Smith|2024-01-11
+B003|Emily Brown|2024-01-12
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ cat booking.txt
+B001|John Doe|123 Main St|Emily Brown|789 Pine St|2024-01-10|Delivered
+B002|Jane Smith|456 Oak St|Robert White|101 Birch St|2024-01-11|Pending
+B003|Emily Brown|789 Pine St|John Doe|123 Main St|2024-01-12|Delivered
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ cat customer.txt
+C001,John Doe,123 Main St,john@example.com,555-1234
+C002,Annie Brown,456 Oak St,newannie@example.com,555-5678
+C003,Andrew Green,789 Pine St,andrew@example.com,555-9101
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$ cat Parcel.txt
+C001|B001|2024-01-10|John Doe|123 Main St|150|Delivered
+C002|B002|2024-01-11|Jane Smith|456 Oak St|200|Pending
+C003|B003|2024-01-12|Emily Brown|789 Pine St|100|Delivered
+
+chava@DhananjayChavan MINGW64 ~/downloads
+$
+
